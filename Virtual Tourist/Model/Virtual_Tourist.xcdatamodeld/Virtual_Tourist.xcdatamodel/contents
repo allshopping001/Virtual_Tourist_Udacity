@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C48a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Album" representedClassName="Album" syncable="YES">
+        <attribute name="page" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pages" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="perpage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="album" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="root" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Root" inverseName="album" inverseEntity="Root" syncable="YES"/>
+    </entity>
+    <entity name="Photo" representedClassName="Photo" syncable="YES">
+        <attribute name="downloaded" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="farm" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" customClassName="Int" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" customClassName="PhotoRecord" syncable="YES"/>
+        <attribute name="isfamily" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" customClassName="Int" syncable="YES"/>
+        <attribute name="isfriend" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" customClassName="Int" syncable="YES"/>
+        <attribute name="ispublic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" customClassName="Int" syncable="YES"/>
+        <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secret" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="server" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="photo" inverseEntity="Album" syncable="YES"/>
+        <relationship name="pin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pin" inverseName="photo" inverseEntity="Pin" syncable="YES"/>
+    </entity>
+    <entity name="Pin" representedClassName="Pin" syncable="YES">
+        <attribute name="isNew" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" usesScalarValueType="YES" customClassName="NSNumber" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" usesScalarValueType="YES" customClassName="NSNumber" syncable="YES"/>
+        <attribute name="snapshot" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" customClassName="UIImage" syncable="YES"/>
+        <relationship name="photo" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Photo" inverseName="pin" inverseEntity="Photo" syncable="YES"/>
+    </entity>
+    <entity name="Root" representedClassName="Root" syncable="YES">
+        <attribute name="stat" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="root" inverseEntity="Album" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Album" positionX="-2605.203125" positionY="-2620.98828125" width="128" height="133"/>
+        <element name="Photo" positionX="-2431.53515625" positionY="-2695.82421875" width="128" height="255"/>
+        <element name="Pin" positionX="-2443.5390625" positionY="-2419.75" width="128" height="120"/>
+        <element name="Root" positionX="-2770.30078125" positionY="-2560.9765625" width="128" height="73"/>
+    </elements>
+</model>
